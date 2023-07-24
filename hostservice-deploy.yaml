@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hostservcie-deploy
+spec:
+  selector:
+    matchLabels:
+      app: hostservcie
+  template:
+    metadata:
+      labels:
+        app: hostservcie
+    spec:
+      containers:
+      - name: hostservcie-container
+        image: dangtong/node-app
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
